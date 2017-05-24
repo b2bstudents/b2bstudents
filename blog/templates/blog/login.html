@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pseudo %}{% endblock %}
+{% block nav %}{% endblock %}
+{% block nav1 %}{% endblock %}
+{% block staticfiles %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}" type="text/css">
+{% endblock %}
+{% block content %} 
+    <div class="container"><br><br>
+        <form class="form-horizontal col-sm-7" role="form" action="#" method="post" style="margin-left: 20%">
+            <span style="color: red;padding-bottom: 18px;display: block;">{{ login_errone }}</span>
+            {% csrf_token %}
+        	<div class="form-group">
+                <label for="pseudo" class="col-sm-4 control-label" style="float: left;font-weight: bold">Pseudo</label>
+                    <div class="col-sm-8" style="float: left;">
+                        <input type="text" class="form-control" name="pseudo" id="pseudo" value="{{ request.session.nom1 }}" required>
+                    </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="mdp" class="col-sm-4 control-label" style="float: left;font-weight: bold">Mot de passe</label>
+                    <div class="col-sm-8" style="float: left;">
+                        <input type="password" class="form-control" name="mdp" id="mdp" required>
+                    </div>
+            </div>
+            <div class="form-group" style="margin-top: 20px;float: right;margin-right: 15px;">
+                <p><input type="submit" value="Connexion" class="btn btn-success" /></p>
+            </div>
+    	</form>
+        <div style="clear: both;"></div>
+        <span class="col-sm-4" style="display: block;float: right;">Pas encore inscrit? Faites-le <a href="{% url "inscription" %}">ici</a>!</span>
+    </div>
+{% endblock %}

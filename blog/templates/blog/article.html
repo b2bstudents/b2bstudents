@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+    <div class="container"><br>
+    <a style="margin-left: 13%" href="{% url "accueil" pseudo=request.session.member_name %}">
+       << Page précédente
+    </a><br><br>
+    {% if articles %}
+        <div class="detail_article">
+        {% for article in articles %}
+            <h1 style="color: #000;">{{ article.libelle }}</h1>
+       			<span>Cat&eacute;gorie :<strong> {{ article.categorie }}</strong> - Marque :<strong> {{ article.marque }}</strong> - Couleur :<strong> {{ article.couleur }}</strong></span><br/>
+       			<span style="display: block;float: left;margin-left: 10px"><strong>Description :</strong><br>{{ article.description}}</span>
+       			{% for logdin in logd %}
+		        <span style="display: block;float: right;margin-right: 10px"><strong>Contact :</strong><br> Vendeur:  {{ logdin.nom }} <br>  T&eacute;l&eacute;phone : {{ logdin.tel }} <br>  Mail :  {{ logdin.mail }}</span><br/>
+		        {% endfor %} 
+		        <div style="clear: both;"></div>      			
+            <div style="height: auto;width: auto;">
+              <img src="/media/{{ article.docfile.name }}">
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>Il n'y a pas encore d'articles.</p>
+    {% endif %}
+    </div>
+	<div style="clear: both;"></div><br> 
+    <a style="margin-left: 20%" href="{% url "accueil" pseudo=request.session.member_name %}">
+       << Page précédente
+    </a>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% if request.session.member_id %}
+	{% block content %} 
+	    <div class="container"><br><br>
+	        <form class="form-horizontal" role="form" action="#" method="post" style="text-align: center">
+	            {% csrf_token %}
+	        	<input type="text" name="recherche" id="recherche" placeholder="Taper ici votre mot-clé">
+	        	<input type="submit" class="btn btn-success" name="sub" id="sub" value="Rechercher">
+	    	</form>
+	    {% if articles %}
+	        <div>
+	        {% for article in articles %}
+	            <a class="anarticle" id="{{ article.id }}{{ article.user_id }}" href="{% url "afficher_article" id_article=article.id id_user=article.user_id %}">
+	            	<h3 style="height: 70px;color: #000">{{ article.libelle }}</h3>
+	       			<span>{{ article.categorie }} - {{ article.marque }} - {{ article.couleur }}</span><br/>
+	           		<img src="/media/{{ article.docfile.name }}" width="220" height="220">
+	            </a>
+	        {% endfor %}
+	        </div>
+	    {% else %}
+	        <p>Il n'y a pas encore d'articles.</p>
+	    {% endif %}
+	    </div>
+	    <div style="clear: both;"></div>
+		<div id="vp" style="display:block;text-align: center;"><input type="button" class="btn btn-success" name="voirp" id="voirp" value="Voir plus" style="padding: 10px 25px;font-size: 30px;border-radius: 15px;"></div>
+		<div id="vm" style="display:none;text-align: center;"><input type="button" class="btn btn-success" name="voirm" id="voirm" value="Voir moins" style="padding: 10px 25px;font-size: 30px;border-radius: 15px;"></div>
+	{% endblock %}
+{% else %}
+	<p>Non connecté</p>
+{% endif %}
+
+{% block scriptjs %}
+<script>
+	document.addEventListener('DOMContentLoaded', function(){ 
+		buttons = document.querySelectorAll(".anarticle");
+	    for (i = 0; i < buttons.length; i++) {
+	        element = buttons[i];
+	        element.style.display = "none";
+	    }
+		affiche3 = 0;
+	    affiche = 6;
+	    buttons = document.querySelectorAll(".anarticle");
+	    for (i = 0; i < affiche; i++) {
+	        element = buttons[i];
+	        element.style.display = "block";
+	    }
+	    document.getElementById("voirp").addEventListener('click', function(){
+			affiche += 6;
+			buttons = document.querySelectorAll(".anarticle");
+			if(buttons.length - affiche >= 6)
+				affiche2 = affiche;
+			else{
+				affiche2 = affiche = buttons.length;
+				document.getElementById("vp").style.display = "none";
+				document.getElementById("vm").style.display = "block";
+			}
+		    for (i = 0; i < affiche2; i++) {
+		        element = buttons[i];
+		        element.style.display = "block";
+		    }
+	    });
+	    document.getElementById("voirm").addEventListener('click', function(){
+			arret = false;
+			buttons = document.querySelectorAll(".anarticle");
+			if(affiche - 6 > 0)
+				affiche2 = affiche;
+			else{
+				affiche2 = buttons.length - affiche;
+				document.getElementById("vp").style.display = "block";
+				document.getElementById("vm").style.display = "none";
+				arret = true;
+			}			
+			if(!arret){
+				affiche -= 6;
+				if(affiche<=6){
+					affiche3 = affiche;
+					document.getElementById("vp").style.display = "block";
+					document.getElementById("vm").style.display = "none";
+				}
+
+			    for (i = 0; i < buttons.length; i++) {
+			        element = buttons[i];
+			        if(i<affiche)
+			        	element.style.display = "block";
+			        else
+			        	element.style.display = "none";
+			    }
+			}else{
+				affiche = affiche3;
+			    /*for (i = 0; i < affiche; i++) {
+			        element = buttons[i];
+			        	element.style.display = "block";
+			    }*/
+			}
+	    });
+	}, false);
+</script>
+{% endblock %}

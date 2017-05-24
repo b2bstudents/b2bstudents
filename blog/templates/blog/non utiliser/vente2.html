@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Vente en ligne{% endblock %}
+{% block staticfiles %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}" type="text/css">
+{% endblock %}
+{% block content %} 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">     
+                    <div class="tableaudebord">
+                        <div class="contact_container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <h2>Mettre en ligne un article</h2>
+                                    <p>Les champs avec un * sont obligatoires </p>
+                                    <div class="nb_com" style="display:none">9</div>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class='container'>
+                            <div class='row'>                                
+                                    <form class="form-horizontal col-lg-12" role="form" action="#" method="post" enctype="multipart/form-data">
+                                        <div class='row'>
+                                            <div class="col-lg-12">
+                                                <div class="titleprghp">
+                                                    <span class="prg">Informations sur l'article</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            
+                                                <div class="col-lg-6">
+                                                    <!--<form class="form-horizontal" role="form">-->
+                                                    <div class="form-group">
+                                                        <label for="libelle" class="col-sm-2 control-label">Libell&eacute;</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="libelle" id="libelle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="categorie" class="col-sm-2 control-label">Cat&eacute;gorie</label>
+                                                        <div class="col-sm-8">
+                                                            <select class="form-control" name="categorie" id="categorie">
+                                                                <option value="5">Ordinateur</option>   
+                                                                <option value="6">Electrom&eacute;nager</option>   
+                                                                <option value="7">Son</option>   
+                                                                <option value="8">T&eacute;l&eacute;phone</option>
+                                                                <option value="9">V&ecirc;tement</option>   
+                                                                <option value="10">Vid&eacute;o</option> 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" >
+                                                        <label for="marque" class="col-sm-2 control-label">Marque</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="marque" id="marque">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="couleur" class="col-sm-2 control-label">Couleur</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="couleur" id="couleur">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="etat" class="col-sm-2 control-label">Etat</label>
+                                                        <div class="col-sm-8">                                                   
+                                                            <select class="form-control" name="etat" id="etat">
+                                                                <option value="5">Neuf</option>   
+                                                                <option value="6">Tr&egrave;s bon &eacute;tat</option>   
+                                                                <option value="7">Bon &eacute;tat</option>   
+                                                                <option value="8">Moyen</option>
+                                                                <option value="9">R&eacute;parable</option> 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number" class="col-sm-2 control-label">Prix(&euro;)</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="number" maxlength="4" class="form-control" name="prix" id="prix" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                        </div>
+                                                    </div>
+                                                    <!--                                    </form>-->
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <!--<form class="form-horizontal" role="form">-->
+                                                    <div class="form-group">
+                                                        <label for="description" class="col-sm-2 control-label">Description</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="textarea" class="form-control" name="description" id="description">
+                                                        </div>
+                                                    </div>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                    <div class="titleprghp">
+                                                            <span class="prg">Vos informations</span> 
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="form-group">
+                                                        <label for="nom" class="col-sm-2 control-label">Nom</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="nom" id="nom">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="tel" class="col-sm-2 control-label">T&eacute;l&eacute;phone</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="number" minlength="10" maxlength="14" class="form-control" name="tel" id="tel" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="mail" class="col-sm-2 control-label">Mail</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="email" class="form-control" name="mail" id="mail">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="adresse" class="col-sm-2 control-label">Adresse</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="adresse" id="adresse">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!--label for="privilege" class="col-sm-2 col-xs-12 control-label">Privil&eagrave;ge</label>
+                                                        <div class="checkoption">
+                                                            <label class="checkbox inline no_indent">
+                                                                <input type="checkbox" id="inlineCheckbox1" value="option1"> Vip Acqu&eacute;reur
+                                                            </label>
+                                                            <label class="checkbox inline no_indent">
+                                                                <input type="checkbox" id="inlineCheckbox2" value="option1"> Vip Investisseur
+                                                            </label>
+                                                        </div-->
+                                                        {% csrf_token %}
+                                                        <p>{{ form.non_field_errors }}</p>
+                                                        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                                                        <p>
+                                                            {{ form.docfile.errors }}
+                                                            {{ form.docfile }}                                            
+                                                        </p>
+
+                                                        <p><input type="submit" value="Upload" /></p>
+                                                    </div>
+                                                    <!--</form>-->
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        <div class="col-lg-12">
+
+            {% if articles %}
+                <ul>
+                {% for article in articles %}
+                    <li>{{ article.libelle }} - {{ article.marque }} - {{ article.categorie }} - {{ article.couleur }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No articles.</p>
+            {% endif %}
+
+
+            {% if documents %}
+                <ul>
+                {% for document in documents %}
+                    <li>{{ document.docfile.name }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+    <a href="{% url "afficher_article" id_article %}">
+       Lien vers mon super article NUM {{ id_article }}
+    </a>{{ adresse }}
+{% endblock %}

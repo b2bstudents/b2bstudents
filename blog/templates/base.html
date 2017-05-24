@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+  {% block staticfiles %}
+  <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}" type="text/css">
+  {% endblock %}
+  <title>{% block title %}TASTE, notre site de vente en ligne{% endblock %}</title>
+</head>
+<body>
+<!--header><h1>VeL Vente en ligne</h1></header-->
+    <nav style="background-image:linear-gradient(to right,red,white);padding: 10px 0;">
+        {% block logo %}
+          <div style="margin-left: 5%;width: 20%;">
+            <img src="/media/logo.jpg" width="160" height="160" class="logo_img">
+          </div>          
+        {% endblock %}        
+          <div style="margin-left: 5%;width: 40%;text-align: center;float: left;padding-top: 30px;color: #fff;">
+            <h1>TASTE</h1>
+            Le premier site de ventes et d'échanges en ligne du LFT
+          </div> 
+        <div style="float: right;width: 30%;">
+          {% block pseudo %}
+            <a style="float: right;margin: 20px;font-weight: bold; font-size: 17px;color: #99EE57;" href="{% url "logot" %}">Se d&eacute;connecter</a>
+            <h5 style="margin: 20px;color: #fff;">Bienvenue {{ request.session.member_name }}</h5>
+          {% endblock %}
+          {% block nav %}
+            <ul class="ulmenu" style="margin-right: 20px;">
+                <li class="limenu"><a href="{% url "accueil" pseudo=request.session.member_name %}-accueil">Acheter</a></li>
+                <li class="limenu"><a href="http://127.0.0.1:8000/blog/vente">Vendre</a></li>
+                <!--li class="limenu"><a href="/contact/">FAQ</a></li-->
+            </ul>
+          {% endblock %}
+        </div>
+        <div style="clear:both"></div>
+        <!--{% block nav1 %}
+        <div style="text-align:center">
+    	    <img height="150" width="150" src="{% static 'blog/0.jpg' %}" alt="Mon image" />
+    	    <img height="150" width="150" src="{% static 'blog/1.jpg' %}" alt="Mon image" />
+    	    <img height="150" width="150" src="{% static 'blog/2.jpg' %}" alt="Mon image" />
+    	    <img height="150" width="150" src="{% static 'blog/3.jpg' %}" alt="Mon image" />
+    	    <img height="150" width="150" src="{% static 'blog/4.jpg' %}" alt="Mon image" />
+    	    <img height="150" width="150" src="{% static 'blog/5.jpg' %}" alt="Mon image" />
+        </div>
+        {% endblock %}-->
+    </nav>
+    <section id="content">
+        {% block content %}{% endblock %}
+    </section>
+<footer>&copy; TASTE-FULL</footer>
+{% block scriptjs %}{% endblock %}
+</body>
+</html>

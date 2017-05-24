@@ -1,0 +1,48 @@
+ol, .ulmenu, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+    display: inline-flex;
+}
+.logo_img{
+	display: block;
+    float: left;
+}
+.limenu {
+	margin-left: 20px;font-size: 25px;background-color: red; padding:4px;border-radius:12px;padding: 2px 10px;
+}
+.limenu a{
+	text-decoration: none !important;color: #fff !important;
+}
+.limenu:hover{
+	background-color:#99EE57 !important;
+}
+.inline {
+	display: inline-block;
+}
+label {
+	min-width: 120px;
+}
+.anarticle{
+	float: left; display: block; width: 27%;height: 360px;margin: 2%; background: #eee;padding: 5px; text-align: center; border-radius: 8px; text-decoration: none !important;background: #fff;display: block;background-image: radial-gradient(ellipse farthest-corner at 35px 35px , #76f656 0%, rgba(0, 0, 255, 0) 70%, #fff 95%);
+}
+.anarticle span{
+	height: 20px; display: block; color: black !important; font-size: 17px;
+}
+.detail_article{
+	width: 80%;margin-left: 10%;border-radius: 10px;padding: 10px;background: #fff;display: block;float: left;text-align: center;background-image: radial-gradient(ellipse farthest-corner at 35px 35px , #76f656 0%, rgba(0, 0, 255, 0) 70%, #fff 95%);
+}
+.titleprghp {
+	background:#99EE57;
+	height: 46px;
+	color: #000;
+	font-size: 23px;
+	line-height: 40px;
+	padding: 0 0 0 20px;
+	margin: 20px 0 20px;
+}
+#recherche{
+	border-radius: 5px;
+    width: 40%;
+    height: 50px;
+}

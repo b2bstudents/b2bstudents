@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pseudo %}{% endblock %}
+{% block nav %}{% endblock %}
+{% block nav1 %}{% endblock %}
+{% block staticfiles %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}" type="text/css">
+{% endblock %}
+{% block content %}
+<span id="player" style="display: block; visibility: hidden;"><object style="width: 0px; height: 0px;"><param value="http://www.youtube.com/v/XOMe4bIrawg&autoplay=1&loop=1" id="movie"><param value="true" id="allowFullScreen"><param value="always"><embed src="http://www.youtube.com/v/XOMe4bIrawg&autoplay=1&loop=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" style="width: 0px; height: 0px;"></object></span>
+        <div class="container">  
+            <div class="contact_container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12"><br><br>
+                        <h2>S'inscrire</h2>
+                        <p style="color: red;">Tous les champs sont obligatoires </p>
+                        <div class="nb_com" style="display:none">9</div>
+                    </div>
+                </div> 
+            </div>
+            <span class="col-sm-4" style="display: block;float: right;">D&eacute;jà inscrit? Connectez-vous <a href="{% url "login" %}">ici</a>!</span>
+            <div style="clear: both;"></div>
+
+            <form class="form-horizontal col-lg-8" role="form" action="#" method="post" >
+	            {% csrf_token %}
+                <div class="titleprghp col-lg-12">
+	                <span class="prg">Informations personnelles</span> 
+	            </div>                            
+                <div class="form-group">
+                    <label for="nom" class="col-lg-4 control-label">Nom</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="nom" id="nom" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pseudo" class="col-lg-4 control-label">Pseudo</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="pseudo" id="pseudo" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tel" class="col-lg-4 control-label">T&eacute;l&eacute;phone</label>
+                    <div class="col-lg-8">
+                        <input type="number" minlength="10" maxlength="14" class="form-control" name="tel" id="tel" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); " required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mail" class="col-lg-4 control-label">Mail</label>
+                    <div class="col-lg-8">
+                        <input type="email" class="form-control" name="mail" id="mail" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adresse" class="col-lg-4 control-label">Adresse</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="adresse" id="adresse" required>
+                    </div>
+                </div>                                        
+	            <div class="form-group" style="margin-top: 20px;float: right;margin-right: 15px;">
+	                <p><input type="submit" value="S'inscrire" class="btn btn-success" onclick="javascript: if (document.getElementById('tel').value.length < document.getElementById('tel').minLength){alert('Renseignez un numéro de téléphone valide');return false;}if (!document.getElementById('mail').value.slice(-6).localeCompare('egd.mg')==0){alert('Renseignez un mail valide de type egd.mg car votre mot de passe vous y sera envoyé');return false;}" /></p>
+	            </div>
+            </form>
+		</div>
+{% endblock %}

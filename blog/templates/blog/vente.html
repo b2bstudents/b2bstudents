@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">     
+                    <div class="tableaudebord">
+                        <div class="contact_container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <h2>Mettre en ligne un article</h2>
+                                    <p style="color: red;">Tous les champs sont obligatoires </p>
+                                    <div class="nb_com" style="display:none">9</div>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class='container'>
+                            <div class='row'>                                
+                                    <form class="form-horizontal col-lg-12" role="form" action="#" method="post" enctype="multipart/form-data">
+                                        <div class='row'>
+                                            <div class="col-lg-12">
+                                                <div class="titleprghp">
+                                                    <span class="prg">Informations sur l'article</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            
+                                                <div class="col-lg-6">
+                                                    <!--<form class="form-horizontal" role="form">-->
+                                                    <div class="form-group">
+                                                        <label for="libelle" class="col-sm-2 control-label">Libell&eacute;</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="libelle" id="libelle" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="categorie" class="col-sm-2 control-label">Cat&eacute;gorie</label>
+                                                        <div class="col-sm-8">
+                                                            <select class="form-control" name="categorie" id="categorie">
+                                                                <option value="Ordinateur">Ordinateur</option>   
+                                                                <option value="Electroménager">Electrom&eacute;nager</option>   
+                                                                <option value="Son">Son</option>   
+                                                                <option value="Téléphone">T&eacute;l&eacute;phone</option>
+                                                                <option value="Vêtement">V&ecirc;tement</option>   
+                                                                <option value="Vidéo">Vid&eacute;o</option> 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" >
+                                                        <label for="marque" class="col-sm-2 control-label">Marque</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="marque" id="marque" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="couleur" class="col-sm-2 control-label">Couleur</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="couleur" id="couleur" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="etat" class="col-sm-2 control-label">Etat</label>
+                                                        <div class="col-sm-8">                                                   
+                                                            <select class="form-control" name="etat" id="etat">
+                                                                <option value="5">Neuf</option>   
+                                                                <option value="6">Tr&egrave;s bon &eacute;tat</option>   
+                                                                <option value="7">Bon &eacute;tat</option>   
+                                                                <option value="8">Moyen</option>
+                                                                <option value="9">R&eacute;parable</option> 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number" class="col-sm-2 control-label">Prix(&euro;)</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="number" maxlength="4" class="form-control" name="prix" id="prix" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                                                        </div>
+                                                    </div>
+                                                    <!--                                    </form>-->
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <!--<form class="form-horizontal" role="form">-->
+                                                    <div class="form-group">
+                                                        <label for="description" class="col-sm-2 control-label">Description</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="textarea" class="form-control" name="description" id="description" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                        <div class="titleprghp">
+                                                                <span class="prg">Vos informations</span> 
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    {% for lg in logd %}
+                                                    <div class="form-group">
+                                                        <label for="nom" class="col-sm-2 control-label">Nom</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" minlength="1" maxlength="3" class="form-control" name="nom" id="nom" value="{{ lg.nom }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="tel" class="col-sm-2 control-label">T&eacute;l&eacute;phone</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="number" minlength="10" maxlength="14" class="form-control" name="tel" id="tel" value="{{ lg.tel }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="mail" class="col-sm-2 control-label">Mail</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="email" class="form-control" name="mail" id="mail" value="{{ lg.mail }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="adresse" class="col-sm-2 control-label">Adresse</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" name="adresse" id="adresse" value="{{ lg.adresse }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                    <div class="form-group">
+                                                        {% csrf_token %}
+                                                        <p>{{ form.non_field_errors }}</p>
+                                                        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                                                        <p>
+                                                            {{ form.docfile.errors }}
+                                                            {{ form.docfile }}                                            
+                                                        </p>
+
+                                                        <p><input type="submit" value="Enregistrer" class="btn btn-success" /></p>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</div>
+{% endblock %}
